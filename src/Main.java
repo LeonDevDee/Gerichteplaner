@@ -4,6 +4,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String args[]){
+
+
         TextdateienVerwaltung textdateienVerwaltung = new TextdateienVerwaltung("gerichte.txt");
         Gerichtsplaner gerichtsplaner = new Gerichtsplaner(erzeugeGerichte(textdateienVerwaltung),true,true,true,true,true,false,false);
         List<Woche> wochen= gerichtsplaner.getWochen();
@@ -15,7 +17,27 @@ public class Main {
                 System.out.println(tage.get(j).getTagNr() + ":" + tage.get(j).getGerichtsname());
             }
         }
+
+        PdfExport pdfExport = new PdfExport();
+        pdfExport.AddHeading();
+
+        for (int i = 0; i < wochen.size(); i++){
+            String GerichtsNameAnTagNr[] ={"-","-","-","-","-","-","-"};
+            List<Tag> tage = wochen.get(i).getTage();
+            for(int j = 0; j < tage.size(); j++){
+                if(tage.get(j).getGerichtsname() != null){
+                    GerichtsNameAnTagNr[j] = tage.get(j).getGerichtsname();
+                }
+            }
+            pdfExport.AddWoche(i,GerichtsNameAnTagNr[0],GerichtsNameAnTagNr[1],GerichtsNameAnTagNr[2],
+                    GerichtsNameAnTagNr[3], GerichtsNameAnTagNr[4], GerichtsNameAnTagNr[5],
+                    GerichtsNameAnTagNr[6]);
+        }
+
+        pdfExport.Close();
+
     }
+
 
     public static List<Gericht> erzeugeGerichte(TextdateienVerwaltung tv){
         List<Gericht> gerichte = new ArrayList<>();

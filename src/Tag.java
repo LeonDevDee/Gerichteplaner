@@ -26,4 +26,5 @@ public class Tag {
     public String getGerichtsname(){
         return  gerichtsname;
     }
+
 }
