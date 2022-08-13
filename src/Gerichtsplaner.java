@@ -10,7 +10,7 @@ public class Gerichtsplaner {
         wochen = new ArrayList<>();
         this.gerichte = gerichte;
 
-
+        //Alle Gerichte einmal aufwenden
         do{
             if(!alleWochenVoll()){
                 int wochenID = sucheLeereWochenID();
@@ -29,7 +29,19 @@ public class Gerichtsplaner {
 
         }while (!alleGerichteGenutzt());
 
-
+        //sicherstellen, dass alle Wochen beendet sind
+        while(!alleWochenVoll()){
+            int wochenID = sucheLeereWochenID();
+            List<Integer> tagNrs = wochen.get(wochenID).getLeereTagNrs();
+            int passendeGerichtsID;
+            if(tagNrs.size() > 1 && tagNrs.get(1) - 1 == tagNrs.get(0)){
+                passendeGerichtsID = suchePassendeGerichtID(tagNrs.get(0), 2);
+            }else {
+                passendeGerichtsID = suchePassendeGerichtID(tagNrs.get(0), 1);
+            }
+            wochen.get(wochenID).fuegeGerichtHinzu(tagNrs.get(0),gerichte.get(passendeGerichtsID));
+            gerichte.get(passendeGerichtsID).erhoeheGenutzt();
+        }
 
     }
 
