@@ -6,8 +6,8 @@ public class Main {
     public static void main(String args[]){
         TextdateienVerwaltung textdateienVerwaltung = new TextdateienVerwaltung("Gerichte.txt");
 
-
-        Gerichtsplaner gerichtsplaner = new Gerichtsplaner(erzeugeGerichte(textdateienVerwaltung),true,true,true,true,true,false,false);
+        Boolean[] kochtage = kochtageErmitteln(textdateienVerwaltung);
+        Gerichtsplaner gerichtsplaner = new Gerichtsplaner(erzeugeGerichte(textdateienVerwaltung),kochtage[0],kochtage[1],kochtage[2],kochtage[3],kochtage[4],kochtage[5],kochtage[6]);
         List<Woche> wochen = gerichtsplaner.getWochen();
 
         for(int i = 0; i < wochen.size(); i++){
