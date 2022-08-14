@@ -1,5 +1,5 @@
-<h1>Gerichtsplaner</h1>
-<p>Gerichtsplaner ist ein Programm, das einen Gerichtsplan auf bestimmten Wünschen erfüllt, wie den Gerichtswünschen an bestimmten Tagen 
+<h1>Gerichteplaner</h1>
+<p>Gerichteplaner ist ein Programm, das einen Gerichtsplan auf bestimmten Wünschen erfüllt, wie den Gerichtswünschen an bestimmten Tagen 
 (z.B. am Montag soll etwas anderes gekocht werden als am Mittwoch) oder die Menge der Tage, die nach Kochen des Gerichtes das Gericht gegessen werden kann.</p>
 <p>Es bringt dabei alle Gerichte mindestens einmal ein, sonst funktioniert das Programm auch nicht. Versucht aber auch wenn Gerichte mehr als einmal dran kommen müssen
 möglichst ausgewogen zu sein.</p>
