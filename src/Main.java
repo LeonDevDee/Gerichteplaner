@@ -4,11 +4,11 @@ import java.util.List;
 public class Main {
 
     public static void main(String args[]){
+        TextdateienVerwaltung textdateienVerwaltung = new TextdateienVerwaltung("Gerichte.txt");
 
 
-        TextdateienVerwaltung textdateienVerwaltung = new TextdateienVerwaltung("gerichte.txt");
         Gerichtsplaner gerichtsplaner = new Gerichtsplaner(erzeugeGerichte(textdateienVerwaltung),true,true,true,true,true,false,false);
-        List<Woche> wochen= gerichtsplaner.getWochen();
+        List<Woche> wochen = gerichtsplaner.getWochen();
 
         for(int i = 0; i < wochen.size(); i++){
             List<Tag> tage = wochen.get(i).getTage();
@@ -18,8 +18,8 @@ public class Main {
             }
         }
 
-        PdfExport pdfExport = new PdfExport();
-        pdfExport.AddHeading();
+        PdfExport pdfExport = new PdfExport("Gerichtsplan.pdf");
+        pdfExport.addHeading();
 
         for (int i = 0; i < wochen.size(); i++){
             String GerichtsNameAnTagNr[] ={"-","-","-","-","-","-","-"};
@@ -29,21 +29,53 @@ public class Main {
                     GerichtsNameAnTagNr[j] = tage.get(j).getGerichtsname();
                 }
             }
-            pdfExport.AddWoche(i,GerichtsNameAnTagNr[0],GerichtsNameAnTagNr[1],GerichtsNameAnTagNr[2],
+            pdfExport.addWoche(i,GerichtsNameAnTagNr[0],GerichtsNameAnTagNr[1],GerichtsNameAnTagNr[2],
                     GerichtsNameAnTagNr[3], GerichtsNameAnTagNr[4], GerichtsNameAnTagNr[5],
                     GerichtsNameAnTagNr[6]);
         }
 
-        pdfExport.Close();
+        pdfExport.close();
 
+    }
+
+    public static Boolean[] kochtageErmitteln(TextdateienVerwaltung tv){
+        Boolean[] b = {false, false, false, false, false, false, false};
+        String kochtageRaw = tv.dateiLesen().get(0);
+        String[] kochtage = kochtageRaw.split(",");
+        for(int i = 0; i < kochtage.length; i++){
+            switch (kochtage[i]){
+                case "Mo":
+                    b[0] = true;
+                    break;
+                case "Di":
+                    b[1] = true;
+                    break;
+                case "Mi":
+                    b[2] = true;
+                    break;
+                case "Do":
+                    b[3] = true;
+                    break;
+                case "Fr":
+                    b[4] = true;
+                    break;
+                case "Sa":
+                    b[5] = true;
+                    break;
+                case "So":
+                    b[6] = true;
+                    break;
+            }
+        }
+        return b;
     }
 
 
     public static List<Gericht> erzeugeGerichte(TextdateienVerwaltung tv){
         List<Gericht> gerichte = new ArrayList<>();
 
-        List<String> gerichteRaw = tv.DateiLesen();
-        for(int i = 0; i < gerichteRaw.size(); i++){
+        List<String> gerichteRaw = tv.dateiLesen();
+        for(int i = 1; i < gerichteRaw.size(); i++){
             String gerichtRaw = gerichteRaw.get(i);
             String[] gerichtArray = gerichtRaw.split(",");
             String name = gerichtArray[0];

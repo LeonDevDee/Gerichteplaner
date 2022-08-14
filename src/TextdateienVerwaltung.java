@@ -12,7 +12,7 @@ public class TextdateienVerwaltung
     // Bezugsobjekte
 
     // Attribute
-    String path  = "C:\\Users\\wel\\Documents\\";
+    String path  = "";
 
     // Konstruktor
     public TextdateienVerwaltung(String filename)
@@ -20,7 +20,7 @@ public class TextdateienVerwaltung
         path = path + filename;
     }
     // Dienste
-    public void DateiBeschreiben(List<String> list){
+    public void dateiBeschreiben(List<String> list){
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter(path));
 
@@ -37,7 +37,7 @@ public class TextdateienVerwaltung
         }
     }
 
-    public List<String> DateiLesen(){
+    public List<String> dateiLesen(){
         List<String> list = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(path))) {
 

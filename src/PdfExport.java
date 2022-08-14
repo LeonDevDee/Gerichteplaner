@@ -10,8 +10,9 @@ import java.time.format.DateTimeFormatter;
 public class PdfExport
 {
     Document document;
-    String path = "C:\\Users\\wel\\Documents\\Gerichtsplan.pdf";
-    public PdfExport(){
+    String path;
+    public PdfExport(String path){
+        this.path = path;
         document = new Document();
 
         try {
@@ -24,7 +25,7 @@ public class PdfExport
 
     }
 
-    public void AddHeading(){
+    public void addHeading(){
         try {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
             LocalDateTime localDateTime = LocalDateTime.now();
@@ -44,7 +45,7 @@ public class PdfExport
 
     }
 
-    public void AddWoche(int wochenID, String Mo, String Di, String Mi, String Do, String Fr, String Sa, String So){
+    public void addWoche(int wochenID, String Mo, String Di, String Mi, String Do, String Fr, String Sa, String So){
         try {
             Paragraph p1 = new Paragraph(new Chunk(
                     "Woche " + (wochenID + 1),
@@ -70,7 +71,7 @@ public class PdfExport
 
     }
 
-    public void Close(){
+    public void close(){
         document.close();
     }
 
