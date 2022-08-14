@@ -5,11 +5,12 @@
 möglichst ausgewogen zu sein.</p>
 <h2>How to use</h2>
 <h3>1. Jar-Datei & Start.bat</h3>
-<p>Zum nutzen die jar-Datei weiter unten herunterladen oder builden. Im Ordner der jar-Datei eine bat-Datei zum Start anlegen, diese könnte so aussehen:</p>
+<p>Zum Nutzen die jar-Datei weiter unten herunterladen oder builden. Im Ordner der jar-Datei eine bat-Datei zum Start anlegen. Alternativ kann unten auch der Beispielordner heruntergeladen werden. Dieser hat alle nötigen Dateien enthalten. Falls man es selbst machen will könnte die Start.bat so aussehen:</p>
 <h4>Start.bat</h4>
 <p>java -jar Gerichtsplaner.jar</p>
 <h3>2. Gerichte.txt</h3>
-<p>Des weiteren wird eine Datei für alle Gerichte benötigt. Bei dieser müssen in die erste Zeile alle Tage, an denen gekocht werden soll mit den 
+<p>Des weiteren wird eine Datei für alle Gerichte, auch im selben Ordner, benötigt. Bei dieser müssen in die erste Zeile alle Tage, 
+an denen gekocht werden soll mit den 
 Abkürzungen wie "Mo,Di,Mi,Do" reingeschrieben werden. Im Beispiel würde der Planer einen Plan für die Tage Montag, Dienstag, Mittwoch und Donnerstag generieren.</p>
 <p>Darunter kommen alle Gerichte in eine eigene Zeile. Dies folgt folgendem Schema : ":Gerichtsname:, :Anzahl der Tagean denen das Gericht 
 nach Kochen gegessen werden kann:, :Tage, an denen das Gericht erwünscht ist:"</p>
